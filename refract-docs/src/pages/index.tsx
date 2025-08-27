@@ -37,7 +37,7 @@ function HomepageHeader() {
 									"button button--primary button--lg",
 									styles.primaryButton
 								)}
-								to='/docs/intro'>
+								to=''>
 								<span>🚀 Get Started</span>
 							</Link>
 							<Link
@@ -45,7 +45,7 @@ function HomepageHeader() {
 									"button button--secondary button--lg",
 									styles.secondaryButton
 								)}
-								to='/docs/api'>
+								to=''>
 								<span>📖 API Reference</span>
 							</Link>
 						</div>
@@ -116,7 +116,7 @@ const FeatureList: FeatureItem[] = [
 				with minimal effort and maximum performance.
 			</>
 		),
-		link: "/docs/concepts/refractions",
+		link: "",
 	},
 	{
 		title: "Lenses",
@@ -127,7 +127,7 @@ const FeatureList: FeatureItem[] = [
 				and composable way. Write cleaner, more maintainable code.
 			</>
 		),
-		link: "/docs/concepts/lenses",
+		link: "",
 	},
 	{
 		title: "Optics",
@@ -138,7 +138,7 @@ const FeatureList: FeatureItem[] = [
 				effortlessly across your entire application.
 			</>
 		),
-		link: "/docs/concepts/optics",
+		link: "",
 	},
 ];
 
@@ -148,21 +148,21 @@ const AdditionalFeatures = [
 		icon: "👨‍💻",
 		description:
 			"Built with developers in mind. TypeScript support, excellent IDE integration, and comprehensive documentation.",
-		link: "/docs/developer-experience",
+		link: "",
 	},
 	{
 		title: "Performance First",
 		icon: "🚀",
 		description:
 			"Optimized for speed and efficiency. Minimal bundle size with maximum functionality.",
-		link: "/docs/performance",
+		link: "",
 	},
 	{
 		title: "Community Driven",
 		icon: "🤝",
 		description:
 			"Open source and community-driven. Join thousands of developers building amazing things.",
-		link: "/docs/community",
+		link: "",
 	},
 ];
 
@@ -254,7 +254,7 @@ function CTASection() {
 								"button button--primary button--lg",
 								styles.ctaPrimaryButton
 							)}
-							to='/docs/intro'>
+							to=''>
 							Start Building Now
 						</Link>
 						<Link
@@ -262,7 +262,7 @@ function CTASection() {
 								"button button--outline button--lg",
 								styles.ctaSecondaryButton
 							)}
-							to='/docs/examples'>
+							to=''>
 							View Examples
 						</Link>
 					</div>
