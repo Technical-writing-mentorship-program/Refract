@@ -1,10 +1,10 @@
 # Refract
 
-*Refract – A reactive, composable, and refraction-based JavaScript framework for building user interfaces with clarity.*
+_Refract – A reactive, composable, and refraction-based JavaScript framework for building user interfaces with clarity._
 
 ## What is Refract?
 
-Refract** is a fictional JavaScript framework designed to help developers build modern, scalable, and reactive user interfaces. Inspired by React’s component model and state management principles, Refract introduces a novel concept called **“refractions”**—a declarative way to describe UI behavior and state transitions based on reactive data flows.
+Refract** is a fictional JavaScript framework designed to help developers build modern, scalable, and reactive user interfaces. Inspired by React’s component model and state management principles, Refract introduces a novel concept called **“refractions”\*\*—a declarative way to describe UI behavior and state transitions based on reactive data flows.
 
 While it shares conceptual similarities with React (like components, hooks, and virtual DOM), Refract reimagines the developer experience with:
 
@@ -15,7 +15,7 @@ While it shares conceptual similarities with React (like components, hooks, and 
 - Seamless **integration with TypeScript** and JSX-like syntax
 
 Refract encourages **pure function-driven UIs**, uses **refractive signals** (a reactivity system like Svelte’s stores or Solid.js signals), and introduces the concept of **optical composition**—modular patterns for UI logic reuse.
-  
+
 ## 🎯 Core concepts
 
 ### 1. **Components**
@@ -25,16 +25,16 @@ Refract encourages **pure function-driven UIs**, uses **refractive signals** (a 
 - Props and local reactive state are passed in as "lenses"—an abstraction over refractions.
 
 ```js
-import { createComponent } from 'refract';
+import { createComponent } from "refract";
 
 const Counter = createComponent(({ lens }) => {
-  const count = lens.useRefraction(0);
+	const count = lens.useRefraction(0);
 
-  return (
-    <button onClick={() => count.set(count.value + 1)}>
-      Clicked {count.value} times
-    </button>
-  );
+	return (
+		<button onClick={() => count.set(count.value + 1)}>
+			Clicked {count.value} times
+		</button>
+	);
 });
 ```
 
@@ -43,13 +43,13 @@ const Counter = createComponent(({ lens }) => {
 - A **refraction** is a reactive unit of state.
 - Similar to signals or refs, they update the UI when mutated.
 - Can be scoped globally or locally to components.
-  
+
 ```js
-import { useRefraction } from 'refract';
+import { useRefraction } from "refract";
 
-const theme = useRefraction('light');
+const theme = useRefraction("light");
 
-theme.set('dark');
+theme.set("dark");
 console.log(theme.value); // 'dark'
 ```
 
@@ -60,10 +60,10 @@ console.log(theme.value); // 'dark'
 
 ```js
 const TodoList = createComponent(({ lens }) => {
-  const todos = lens.useRefraction([]);
-  lens.useEffect(() => {
-    fetchTodos().then(todos.set);
-  }, []);
+	const todos = lens.useRefraction([]);
+	lens.useEffect(() => {
+		fetchTodos().then(todos.set);
+	}, []);
 });
 ```
 
@@ -73,18 +73,18 @@ const TodoList = createComponent(({ lens }) => {
 - Similar to React hooks but with dependency-aware caching and animation-aware transitions.
 
 ```js
-import { useOptic } from 'refract';
+import { useOptic } from "refract";
 
 function useMousePosition() {
-  const pos = useRefraction({ x: 0, y: 0 });
+	const pos = useRefraction({ x: 0, y: 0 });
 
-  useOptic(() => {
-    const handler = e => pos.set({ x: e.clientX, y: e.clientY });
-    window.addEventListener('mousemove', handler);
-    return () => window.removeEventListener('mousemove', handler);
-  }, []);
+	useOptic(() => {
+		const handler = (e) => pos.set({ x: e.clientX, y: e.clientY });
+		window.addEventListener("mousemove", handler);
+		return () => window.removeEventListener("mousemove", handler);
+	}, []);
 
-  return pos;
+	return pos;
 }
 ```
 
@@ -118,8 +118,8 @@ my-app/
 ### Basic usage
 
 ```js
-import { createApp } from 'refract';
-import App from './App';
+import { createApp } from "refract";
+import App from "./App";
 
-createApp(App).mount('#root');
+createApp(App).mount("#root");
 ```
