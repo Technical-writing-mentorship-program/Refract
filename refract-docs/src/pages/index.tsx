@@ -24,8 +24,8 @@ function HomepageHeader() {
 				<div className={styles.heroContent}>
 					<div className={styles.heroText}>
 						<Heading as='h1' className={clsx("hero__title", styles.heroTitle)}>
-							Build the future with our{" "}
-							<span className={styles.gradientText}>API platform</span>
+							Refract Documentation{" "}
+							<span className={styles.gradientText}></span>
 						</Heading>
 						<p className={clsx("hero__subtitle", styles.heroSubtitle)}>
 							Everything you need to build and scale your application. Beautiful
@@ -236,42 +236,6 @@ function AdditionalFeaturesSection() {
 	);
 }
 
-function CTASection() {
-	return (
-		<section className={styles.ctaSection}>
-			<div className='container'>
-				<div className={styles.ctaContent}>
-					<Heading as='h2' className={styles.ctaTitle}>
-						Ready to get started?
-					</Heading>
-					<p className={styles.ctaDescription}>
-						Join thousands of developers who are already building amazing
-						applications with our platform.
-					</p>
-					<div className={styles.ctaButtons}>
-						<Link
-							className={clsx(
-								"button button--primary button--lg",
-								styles.ctaPrimaryButton
-							)}
-							to=''>
-							Start Building Now
-						</Link>
-						<Link
-							className={clsx(
-								"button button--outline button--lg",
-								styles.ctaSecondaryButton
-							)}
-							to=''>
-							View Examples
-						</Link>
-					</div>
-				</div>
-			</div>
-		</section>
-	);
-}
-
 export default function Home(): ReactNode {
 	const { siteConfig } = useDocusaurusContext();
 	return (
@@ -283,7 +247,6 @@ export default function Home(): ReactNode {
 				<FeaturesCards />
 				<AdditionalFeaturesSection />
 				<HomepageFeatures />
-				<CTASection />
 			</main>
 		</Layout>
 	);
