@@ -120,8 +120,7 @@ function HomepageHeader() {
 						</Heading>
 						<p className={clsx("hero__subtitle", styles.heroSubtitle)}>
 							Everything you need to build and scale your application. Beautiful
-							documentation, powerful APIs, and developer-first tools with
-							cutting-edge 3D interactions.
+							documentation, powerful APIs, and developer-first tools with.
 						</p>
 						<div className={styles.buttons}>
 							<Link
