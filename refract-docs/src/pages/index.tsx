@@ -5,6 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Heading from "@theme/Heading";
+import { useState, useEffect } from "react";
 
 import styles from "./index.module.css";
 
@@ -13,7 +14,97 @@ type FeatureItem = {
 	description: React.ReactNode;
 	link: string;
 	icon: string;
+	isOfficial?: boolean;
 };
+
+// 3D Card Component with Mouse Tracking
+function ThreeDCard({
+	children,
+	className,
+	isOfficial = false,
+	...props
+}: {
+	children: ReactNode;
+	className?: string;
+	isOfficial?: boolean;
+	[key: string]: any;
+}) {
+	const [rotateX, setRotateX] = useState(0);
+	const [rotateY, setRotateY] = useState(0);
+	const [scale, setScale] = useState(1);
+
+	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+		const card = e.currentTarget;
+		const rect = card.getBoundingClientRect();
+		const centerX = rect.left + rect.width / 2;
+		const centerY = rect.top + rect.height / 2;
+
+		const mouseX = e.clientX - centerX;
+		const mouseY = e.clientY - centerY;
+
+		const rotateXValue = (mouseY / rect.height) * -20;
+		const rotateYValue = (mouseX / rect.width) * 20;
+
+		setRotateX(rotateXValue);
+		setRotateY(rotateYValue);
+		setScale(isOfficial ? 1.08 : 1.05);
+	};
+
+	const handleMouseLeave = () => {
+		setRotateX(0);
+		setRotateY(0);
+		setScale(1);
+	};
+
+	const cardStyle = {
+		transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`,
+		transition: "transform 0.15s ease-out",
+	};
+
+	return (
+		<div
+			className={clsx(className, isOfficial && styles.officialCard)}
+			onMouseMove={handleMouseMove}
+			onMouseLeave={handleMouseLeave}
+			style={cardStyle}
+			{...props}>
+			{isOfficial && (
+				<div className={styles.officialBadge}>
+					<span className={styles.officialBadgeIcon}>⭐</span>
+					<span className={styles.officialBadgeText}>Official</span>
+				</div>
+			)}
+			<div className={styles.cardInner}>{children}</div>
+			{isOfficial && <div className={styles.glowEffect}></div>}
+		</div>
+	);
+}
+
+// Floating Particle Component
+function FloatingParticle({ delay = 0 }: { delay?: number }) {
+	const [position, setPosition] = useState({ x: 0, y: 0 });
+
+	useEffect(() => {
+		const animate = () => {
+			const time = Date.now() * 0.001 + delay;
+			const x = Math.sin(time * 0.5) * 30;
+			const y = Math.cos(time * 0.3) * 20;
+			setPosition({ x, y });
+		};
+
+		const interval = setInterval(animate, 50);
+		return () => clearInterval(interval);
+	}, [delay]);
+
+	return (
+		<div
+			className={styles.floatingParticle}
+			style={{
+				transform: `translate(${position.x}px, ${position.y}px)`,
+			}}
+		/>
+	);
+}
 
 function HomepageHeader() {
 	const { siteConfig } = useDocusaurusContext();
@@ -29,7 +120,8 @@ function HomepageHeader() {
 						</Heading>
 						<p className={clsx("hero__subtitle", styles.heroSubtitle)}>
 							Everything you need to build and scale your application. Beautiful
-							documentation, powerful APIs, and developer-first tools.
+							documentation, powerful APIs, and developer-first tools with
+							cutting-edge 3D interactions.
 						</p>
 						<div className={styles.buttons}>
 							<Link
@@ -77,16 +169,19 @@ function HomepageHeader() {
 						<div className={styles.codeContent}>
 							<pre className={styles.codeBlock}>
 								<code>{`// Install the library
-npm install @yourapi/sdk
+npm install @refract/core
 
 // Initialize and use
-import { ApiClient } from '@yourapi/sdk';
+import { createRefraction } from '@refract/core';
 
-const client = new ApiClient({
-  apiKey: 'your-api-key'
+const state = createRefraction({
+  count: 0,
+  user: null
 });
 
-const result = await client.getData();`}</code>
+// Reactive updates
+state.count.set(42);
+console.log(state.count.get()); // 42`}</code>
 							</pre>
 						</div>
 					</div>
@@ -97,6 +192,9 @@ const result = await client.getData();`}</code>
 				<div className={styles.gradientOrb}></div>
 				<div className={styles.gradientOrb2}></div>
 				<div className={styles.floatingElements}>
+					<FloatingParticle delay={0} />
+					<FloatingParticle delay={1} />
+					<FloatingParticle delay={2} />
 					<div className={styles.floatingElement}></div>
 					<div className={styles.floatingElement}></div>
 					<div className={styles.floatingElement}></div>
@@ -113,10 +211,12 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				Reactive state units similar to signals or stores. Keep your UI in sync
-				with minimal effort and maximum performance.
+				with minimal effort and maximum performance. Built-in TypeScript
+				support.
 			</>
 		),
-		link: "",
+		link: "/docs/refractions",
+		isOfficial: true,
 	},
 	{
 		title: "Lenses",
@@ -124,10 +224,12 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				Scope-aware helpers for accessing props, effects, and state in a clean
-				and composable way. Write cleaner, more maintainable code.
+				and composable way. Write cleaner, more maintainable code with zero
+				boilerplate.
 			</>
 		),
-		link: "",
+		link: "/docs/lenses",
+		isOfficial: true,
 	},
 	{
 		title: "Optics",
@@ -135,10 +237,11 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				Composable logic units like hooks. Organize and reuse app logic
-				effortlessly across your entire application.
+				effortlessly across your entire application with functional composition.
 			</>
 		),
-		link: "",
+		link: "/docs/optics",
+		isOfficial: true,
 	},
 ];
 
@@ -147,22 +250,29 @@ const AdditionalFeatures = [
 		title: "Developer Experience",
 		icon: "👨‍💻",
 		description:
-			"Built with developers in mind. TypeScript support, excellent IDE integration, and comprehensive documentation.",
-		link: "",
+			"Built with developers in mind. Full TypeScript support, excellent IDE integration, comprehensive documentation, and interactive examples.",
+		link: "/docs/developer-experience",
 	},
 	{
 		title: "Performance First",
 		icon: "🚀",
 		description:
-			"Optimized for speed and efficiency. Minimal bundle size with maximum functionality.",
-		link: "",
+			"Optimized for speed and efficiency. Minimal bundle size with maximum functionality. Tree-shakable modules and zero runtime overhead.",
+		link: "/docs/performance",
 	},
 	{
 		title: "Community Driven",
 		icon: "🤝",
 		description:
-			"Open source and community-driven. Join thousands of developers building amazing things.",
-		link: "",
+			"Open source and community-driven. Join thousands of developers building amazing things. Active Discord community and regular updates.",
+		link: "/community",
+	},
+	{
+		title: "Composition API",
+		icon: "🧩",
+		description:
+			"Better logic reuse and organization. Build complex features from simple, reusable pieces. Embrace functional programming principles.",
+		link: "/community",
 	},
 ];
 
@@ -177,24 +287,35 @@ function FeaturesCards() {
 						Core Concepts
 					</Heading>
 					<p className={styles.sectionSubheading}>
-						Discover the powerful building blocks that make our platform unique
+						Discover the powerful building blocks that make our platform unique.
+						Official libraries come with enhanced support and documentation.
 					</p>
 				</div>
 
 				<div className={styles.featuresGrid}>
 					{FeatureList.map((feature, idx) => (
-						<Link key={idx} to={feature.link} className={styles.featureCard}>
-							<div className={styles.featureIcon}>
-								<span>{feature.icon}</span>
-							</div>
-							<div className={styles.featureContent}>
-								<h3 className={styles.featureTitle}>{feature.title}</h3>
-								<p className={styles.featureDescription}>
-									{feature.description}
-								</p>
-							</div>
-							<div className={styles.featureArrow}>→</div>
-						</Link>
+						<ThreeDCard
+							key={idx}
+							isOfficial={feature.isOfficial}
+							className={styles.featureCard}>
+							<Link to={feature.link} className={styles.featureLink}>
+								<div className={styles.featureIcon}>
+									<span>{feature.icon}</span>
+								</div>
+								<div className={styles.featureContent}>
+									<h3 className={styles.featureTitle}>
+										{feature.title}
+										{feature.isOfficial && (
+											<span className={styles.officialIndicator}>✓</span>
+										)}
+									</h3>
+									<p className={styles.featureDescription}>
+										{feature.description}
+									</p>
+								</div>
+								<div className={styles.featureArrow}>→</div>
+							</Link>
+						</ThreeDCard>
 					))}
 				</div>
 			</div>
@@ -210,16 +331,17 @@ function AdditionalFeaturesSection() {
 					<Heading
 						as='h2'
 						className={clsx(styles.sectionHeading, "text--center")}>
-						Why Choose Our Platform?
+						Why Choose Refract?
 					</Heading>
 					<p className={styles.sectionSubheading}>
-						Built for modern development teams who value quality and efficiency
+						Built for modern development teams who value quality, performance,
+						and developer experience
 					</p>
 				</div>
 
 				<div className={styles.additionalFeaturesGrid}>
 					{AdditionalFeatures.map((feature, idx) => (
-						<div key={idx} className={styles.additionalFeatureCard}>
+						<ThreeDCard key={idx} className={styles.additionalFeatureCard}>
 							<div className={styles.additionalFeatureIcon}>{feature.icon}</div>
 							<h3 className={styles.additionalFeatureTitle}>{feature.title}</h3>
 							<p className={styles.additionalFeatureDescription}>
@@ -228,7 +350,7 @@ function AdditionalFeaturesSection() {
 							<Link to={feature.link} className={styles.additionalFeatureLink}>
 								Learn more →
 							</Link>
-						</div>
+						</ThreeDCard>
 					))}
 				</div>
 			</div>
@@ -240,8 +362,8 @@ export default function Home(): ReactNode {
 	const { siteConfig } = useDocusaurusContext();
 	return (
 		<Layout
-			title={`${siteConfig.title} - Developer Platform`}
-			description='Build the future with our powerful API platform. Everything you need to create amazing applications.'>
+			title={`${siteConfig.title} - Reactive State Management`}
+			description='Build reactive applications with Refract. Modern state management with signals, lenses, and optics. TypeScript-first, performance-optimized, and developer-friendly.'>
 			<HomepageHeader />
 			<main>
 				<FeaturesCards />
