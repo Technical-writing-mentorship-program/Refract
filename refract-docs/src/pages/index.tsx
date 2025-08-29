@@ -214,7 +214,7 @@ const FeatureList: FeatureItem[] = [
 				support.
 			</>
 		),
-		link: "/docs/refractions",
+		link: "",
 		isOfficial: true,
 	},
 	{
@@ -227,7 +227,7 @@ const FeatureList: FeatureItem[] = [
 				boilerplate.
 			</>
 		),
-		link: "/docs/lenses",
+		link: "",
 		isOfficial: true,
 	},
 	{
@@ -239,7 +239,7 @@ const FeatureList: FeatureItem[] = [
 				effortlessly across your entire application with functional composition.
 			</>
 		),
-		link: "/docs/optics",
+		link: "",
 		isOfficial: true,
 	},
 ];
@@ -250,28 +250,28 @@ const AdditionalFeatures = [
 		icon: "👨‍💻",
 		description:
 			"Built with developers in mind. Full TypeScript support, excellent IDE integration, comprehensive documentation, and interactive examples.",
-		link: "/docs/developer-experience",
+		link: "",
 	},
 	{
 		title: "Performance First",
 		icon: "🚀",
 		description:
 			"Optimized for speed and efficiency. Minimal bundle size with maximum functionality. Tree-shakable modules and zero runtime overhead.",
-		link: "/docs/performance",
+		link: "",
 	},
 	{
 		title: "Community Driven",
 		icon: "🤝",
 		description:
 			"Open source and community-driven. Join thousands of developers building amazing things. Active Discord community and regular updates.",
-		link: "/community",
+		link: "",
 	},
 	{
 		title: "Composition API",
 		icon: "🧩",
 		description:
 			"Better logic reuse and organization. Build complex features from simple, reusable pieces. Embrace functional programming principles.",
-		link: "/community",
+		link: "",
 	},
 ];
 
