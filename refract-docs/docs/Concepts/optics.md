@@ -87,6 +87,108 @@ export const useAuthProfile = () => {
 
 Now any component can use useAuthProfile() to instantly get authenticated data.
 
+## using Optics in Components
+
+1. FormField (focused input management)
+
+Use optics to focus on just one field in a large form state.
+
+```js
+function FormField({ optic, label }) {
+	const [value, setValue] = useOptic(optic);
+
+	return (
+		<label>
+			{label}
+			<input value={value} onChange={(e) => setValue(e.target.value)} />
+		</label>
+	);
+}
+```
+
+💡 This shows how optics let you bind a single input to a nested piece of state without manually wiring props.
+
+2. TodoItem (working with a single item in a list)
+
+Demonstrates focusing on an array element through optics.
+
+```js
+function TodoItem({ optic }) {
+	const [todo, setTodo] = useOptic(optic);
+
+	return (
+		<div>
+			<input
+				type='checkbox'
+				checked={todo.done}
+				onChange={(e) => setTodo({ ...todo, done: e.target.checked })}
+			/>
+			<span>{todo.text}</span>
+		</div>
+	);
+}
+```
+
+💡 This highlights how optics can zoom into one object inside a bigger collection.
+
+3. ProfileSettings (nested state handling)
+
+Great for showing optics applied to deeply nested structures.
+
+```js
+function ProfileSettings({ optic }) {
+	const [email, setEmail] = useOptic(optic.email);
+	const [username, setUsername] = useOptic(optic.username);
+
+	return (
+		<form>
+			<input value={email} onChange={(e) => setEmail(e.target.value)} />
+			<input value={username} onChange={(e) => setUsername(e.target.value)} />
+		</form>
+	);
+}
+```
+
+💡 Optics let you drill down into email and username without cluttering the component with prop drilling.
+
+4. ListFilter (derived state through optics)
+
+Focus on a computed view of state instead of the raw collection.
+
+```js
+function ListFilter({ optic }) {
+	const [items] = useOptic(optic.activeItems);
+
+	return (
+		<ul>
+			{items.map((item) => (
+				<li key={item.id}>{item.name}</li>
+			))}
+		</ul>
+	);
+}
+```
+
+💡 Shows optics as a tool not just for selection but also for transforming and deriving state.
+
+5. ThemeToggler (global/local bridge)
+
+Focus on shared/global state while keeping the component scoped.
+
+```js
+function ThemeToggler({ optic }) {
+	const [theme, setTheme] = useOptic(optic);
+
+	return (
+		<button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+			Switch to {theme === "light" ? "Dark" : "Light"} Mode
+		</button>
+	);
+}
+```
+
+💡 This demonstrates optics as a bridge between local components and global context/state.
+
 ## Best Practices
 
 - Keep optics focused and reusable.
