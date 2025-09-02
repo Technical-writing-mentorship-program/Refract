@@ -119,8 +119,8 @@ function HomepageHeader() {
 							<span className={styles.gradientText}></span>
 						</Heading>
 						<p className={clsx("hero__subtitle", styles.heroSubtitle)}>
-							Everything you need to build and scale your application. Beautiful
-							documentation, powerful APIs, and developer-first tools with.
+							Build predictable, reactive applications with declarative optics,
+							reusable components, and minimal boilerplate.
 						</p>
 						<div className={styles.buttons}>
 							<Link
@@ -128,7 +128,7 @@ function HomepageHeader() {
 									"button button--primary button--lg",
 									styles.primaryButton
 								)}
-								to=''>
+								to='http://localhost:3000/docs/intro'>
 								<span>🚀 Get Started</span>
 							</Link>
 							<Link
@@ -136,7 +136,7 @@ function HomepageHeader() {
 									"button button--secondary button--lg",
 									styles.secondaryButton
 								)}
-								to=''>
+								to='http://localhost:3000/docs/API/createComponent'>
 								<span>📖 API Reference</span>
 							</Link>
 						</div>
@@ -214,7 +214,7 @@ const FeatureList: FeatureItem[] = [
 				support.
 			</>
 		),
-		link: "",
+		link: "http://localhost:3000/docs/Concepts/refractions",
 		isOfficial: true,
 	},
 	{
@@ -227,7 +227,7 @@ const FeatureList: FeatureItem[] = [
 				boilerplate.
 			</>
 		),
-		link: "",
+		link: "http://localhost:3000/docs/Concepts/lenses",
 		isOfficial: true,
 	},
 	{
@@ -239,7 +239,7 @@ const FeatureList: FeatureItem[] = [
 				effortlessly across your entire application with functional composition.
 			</>
 		),
-		link: "",
+		link: "http://localhost:3000/docs/Concepts/optics",
 		isOfficial: true,
 	},
 ];

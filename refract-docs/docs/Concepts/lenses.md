@@ -5,7 +5,9 @@ title: Lenses
 
 # Lenses
 
-Lenses in Refract are scope-aware helpers that give developers a clean way to access and manipulate state, props, and effects inside components. Think of them as focused "views" into your app’s data, allowing you to read, transform, or update values without needing to pass everything around manually.
+Lenses in Refract are scope-aware helpers for reading and updating deeply nested props, state, and derived effects—without prop-drilling, mutation, or boilerplate. They’re composable, type-safe (when using TypeScript), and optimized to minimize re-renders.
+
+Use lenses when you want precise access to a slice of data while keeping components small, reusable, and predictable.
 
 ## Why Lenses?
 
@@ -48,6 +50,102 @@ const Counter = createComponent(() => {
 	);
 });
 ```
+
+## Core ideas
+
+A lens has two capabilities:
+
+- get(model) -> value — view a focused value
+
+- set(model, value) -> newModel — update a focused value (immutably)
+
+In Refract you won’t usually call get/set directly—you’ll use hooks that bind a lens to the relevant scope (props/state/effects).
+
+## Quick start
+
+```js
+import { useLens, lens } from "refract/lens";
+
+// Example component state (managed by Refract or your own state hook)
+const initial = {
+	user: {
+		profile: { name: "Ada", avatarUrl: "/img/ada.png" },
+		settings: { theme: "dark" },
+	},
+};
+
+export default function ProfileEditor() {
+	// Create a lens to focus on user.profile.name
+	const nameL = lens.path("user.profile.name");
+
+	// Bind the lens to your component state
+	const [name, setName] = useLens(nameL);
+
+	return (
+		<label>
+			Display name
+			<input value={name} onChange={(e) => setName(e.target.value)} />
+		</label>
+	);
+}
+```
+
+lens.path(...) composes a lens from a dot-path. useLens(l) returns a value and an updater for that focus. Updates are immutable and granular.
+
+## Creating lenses
+
+**From a dot path**
+
+```js
+const themeL = lens.path("user.settings.theme");
+```
+
+**From object properties**
+
+```js
+const userL = lens.prop<Root>()("user");           // focus `root.user`
+const profileL = lens.prop<User>()("profile");     // focus `user.profile`
+const nameL = userL.compose(profileL).prop("name"); // `user.profile.name`
+```
+
+**From arrays**
+
+```js
+const itemsL = lens.prop<Cart>()("items");
+const firstItemQtyL = itemsL.index(0).prop("qty");
+```
+
+**Optional paths (safe)**
+
+```js
+const bioL = lens.path("user.profile.bio").optional();
+// get returns string | undefined, set creates path if needed
+```
+
+## Using lenses with different scopes
+
+Refract exposes dedicated hooks to bind a lens to the appropriate source:
+
+```js
+import { useLens } from "refract/lens";         // component-local state
+import { usePropLens } from "refract/lens/prop"; // component props
+import { useEffectLens } from "refract/lens/effect"; // derived/effectful data
+
+function Card({ user }: { user: User }) {
+  const [theme] = usePropLens(lens.path("settings.theme"), user);
+  // read-only by default; pass an updater to make it writable
+  return <div data-theme={theme}>...</div>;
+}
+
+
+useLens(lens[, source, setSource]) — bind to local state (or a provided model + setter)
+
+usePropLens(lens, props[, setProps]) — focus on props (often read-only)
+
+useEffectLens(lens, effectStore) — focus on derived/effect data
+```
+
+If you’re not supplying a model/setter, Refract will bind to the component’s registered state store (via its internal state system). If you’re integrating with React’s useState, pass [model, setModel].
 
 ## Anatomy of a Lens
 

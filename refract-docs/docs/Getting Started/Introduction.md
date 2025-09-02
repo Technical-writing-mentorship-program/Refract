@@ -20,7 +20,7 @@ Learn how to integrate Refract into your project quickly and efficiently. With j
 
 ## What is Refract?
 
-Refract is a fictional JavaScript UI framework designed to simplify how you manage state, logic, and components in your applications. It builds on top of standard JavaScript concepts and introduces a refraction-based model for predictable state flow, composability, and reactivity.
+Refract is a React-inspired JavaScript framework designed to simplify how you manage state, logic, and components in your applications. It builds on top of standard JavaScript concepts and introduces a refraction-based model for predictable state flow, composability, and reactivity.
 
 Here is a minimal example:
 

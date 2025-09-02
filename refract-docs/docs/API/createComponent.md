@@ -1,6 +1,6 @@
 ---
 id: createComponent
-title: createComponent
+title: createComponent()
 ---
 
 Refract applications are built from isolated pieces of UI called components. A component is a small, reusable building block that returns part of your user interface. Components can be as tiny as a button or as large as an entire page.
