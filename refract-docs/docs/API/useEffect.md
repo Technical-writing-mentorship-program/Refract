@@ -1,6 +1,6 @@
 ---
 id: useEffect
-title: useEffect
+title: useEffect()
 ---
 
 In Refract, useEffect is the hook you use when your component needs to synchronize with the outside world.

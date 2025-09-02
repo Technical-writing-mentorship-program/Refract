@@ -9,11 +9,11 @@ Here you’ll find guides, concepts, API references, and tutorials.
 
 ## 📖 Sections
 
-- 🚀 [Getting Started](./Getting%20Started/Introduction.md)
-- 🔍 [Core Concepts](./Concepts/optics.md)
+- 🚀 [Getting Started](http://localhost:3000/docs/intro)
+- 🔍 [Core Concepts](http://localhost:3000/docs/Concepts/refractions)
 - 🛠 [API Reference](./API/createComponent.md)
-- 🎓 [Tutorials](./Tutorials/counter-app.md)
+- 🎓 [Tutorials](http://localhost:3000/docs/Tutorials/counter-app)
 
 :::tip
-If you’re new to Refract, start with **[Getting Started](./Getting%20Started/Introduction.md)**.
+If you’re new to Refract, start with **[Getting Started](http://localhost:3000/docs/Getting%20Started/Introduction)**.
 :::

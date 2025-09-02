@@ -1,6 +1,6 @@
 ---
 id: useRefractions
-title: useRefractions
+title: useRefractions()
 ---
 
 Refractions are the way components in Refract share logic and behavior. They let you “bend” functionality from one part of your UI into another without tightly coupling components. Think of them as reusable lenses: instead of duplicating logic everywhere, you create a refraction and apply it wherever needed.

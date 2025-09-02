@@ -73,7 +73,7 @@ const config: Config = {
 		// Replace with your project's social card
 		image: "img/docusaurus-social-card.jpg",
 		navbar: {
-			title: "My Site",
+			title: "Refract",
 			logo: {
 				alt: "My Site Logo",
 				src: "img/refract-logo.jpg",
@@ -83,7 +83,7 @@ const config: Config = {
 					type: "docSidebar",
 					sidebarId: "tutorialSidebar",
 					position: "left",
-					label: "Tutorial",
+					label: "Docs",
 				},
 				{ to: "/blog", label: "Blog", position: "left" },
 				{

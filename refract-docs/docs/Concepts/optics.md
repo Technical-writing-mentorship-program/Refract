@@ -89,7 +89,7 @@ Now any component can use useAuthProfile() to instantly get authenticated data.
 
 ## using Optics in Components
 
-1. FormField (focused input management)
+**1. FormField (focused input management)**
 
 Use optics to focus on just one field in a large form state.
 
@@ -108,7 +108,7 @@ function FormField({ optic, label }) {
 
 💡 This shows how optics let you bind a single input to a nested piece of state without manually wiring props.
 
-2. TodoItem (working with a single item in a list)
+**2. TodoItem (working with a single item in a list)**
 
 Demonstrates focusing on an array element through optics.
 
@@ -131,7 +131,7 @@ function TodoItem({ optic }) {
 
 💡 This highlights how optics can zoom into one object inside a bigger collection.
 
-3. ProfileSettings (nested state handling)
+**3. ProfileSettings (nested state handling)**
 
 Great for showing optics applied to deeply nested structures.
 
@@ -151,7 +151,7 @@ function ProfileSettings({ optic }) {
 
 💡 Optics let you drill down into email and username without cluttering the component with prop drilling.
 
-4. ListFilter (derived state through optics)
+**4. ListFilter (derived state through optics)**
 
 Focus on a computed view of state instead of the raw collection.
 
@@ -171,7 +171,7 @@ function ListFilter({ optic }) {
 
 💡 Shows optics as a tool not just for selection but also for transforming and deriving state.
 
-5. ThemeToggler (global/local bridge)
+**5. ThemeToggler (global/local bridge)**
 
 Focus on shared/global state while keeping the component scoped.
 
