@@ -118,7 +118,7 @@ const config: Config = {
 						},
 						{
 							label: "X",
-							href: " http://twitter.com/PeaceSandy3",
+							href: "https://github.com/Peacesandy",
 						},
 					],
 				},

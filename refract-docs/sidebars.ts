@@ -42,7 +42,7 @@ const sidebars: SidebarsConfig = {
 			items: [
 				"advanced-guide/Internals",
 				"advanced-guide/Routing",
-				"advanced-guide/optimization", // lowercase o
+				"advanced-guide/optimization",
 			],
 		},
 		"contributing",
