@@ -346,9 +346,6 @@ function AdditionalFeaturesSection() {
 							<p className={styles.additionalFeatureDescription}>
 								{feature.description}
 							</p>
-							<Link to={feature.link} className={styles.additionalFeatureLink}>
-								Learn more →
-							</Link>
 						</ThreeDCard>
 					))}
 				</div>
