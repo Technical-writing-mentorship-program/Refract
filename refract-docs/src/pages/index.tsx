@@ -128,7 +128,7 @@ function HomepageHeader() {
 									"button button--primary button--lg",
 									styles.primaryButton
 								)}
-								to='http://localhost:3000/docs/intro'>
+								to='/docs/intro'>
 								<span>🚀 Get Started</span>
 							</Link>
 							<Link
@@ -136,7 +136,7 @@ function HomepageHeader() {
 									"button button--secondary button--lg",
 									styles.secondaryButton
 								)}
-								to='http://localhost:3000/docs/API/createComponent'>
+								to='/docs/API/createComponent'>
 								<span>📖 API Reference</span>
 							</Link>
 						</div>
@@ -214,7 +214,7 @@ const FeatureList: FeatureItem[] = [
 				support.
 			</>
 		),
-		link: "http://localhost:3000/docs/Concepts/refractions",
+		link: "/docs/Concepts/refractions",
 		isOfficial: true,
 	},
 	{
@@ -227,7 +227,7 @@ const FeatureList: FeatureItem[] = [
 				boilerplate.
 			</>
 		),
-		link: "http://localhost:3000/docs/Concepts/lenses",
+		link: "/docs/Concepts/lenses",
 		isOfficial: true,
 	},
 	{
@@ -239,7 +239,7 @@ const FeatureList: FeatureItem[] = [
 				effortlessly across your entire application with functional composition.
 			</>
 		),
-		link: "http://localhost:3000/docs/Concepts/optics",
+		link: "/docs/Concepts/optics",
 		isOfficial: true,
 	},
 ];
