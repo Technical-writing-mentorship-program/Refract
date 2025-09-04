@@ -1,7 +1,7 @@
 ---
 slug: welcome
 title: Community Guide
-authors: [slorber, yangshun]
+authors: [slorber]
 tags: [facebook, hello, docusaurus]
 ---
 
