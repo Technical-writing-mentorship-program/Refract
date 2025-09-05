@@ -72,6 +72,16 @@ const config: Config = {
 	themeConfig: {
 		// Replace with your project's social card
 		image: "img/docusaurus-social-card.jpg",
+		algolia: {
+			appId: "LOFGZU705Z",
+			apiKey: "22ef0cc1d47fbb4a1348c06eb1918f66",
+			indexName: "refractdocs",
+
+			// Optional settings
+			contextualSearch: true,
+			searchParameters: {},
+			searchPagePath: "search",
+		},
 		navbar: {
 			title: "Refract",
 			logo: {
@@ -91,6 +101,7 @@ const config: Config = {
 					label: "GitHub",
 					position: "right",
 				},
+				{ type: "search", position: "right" },
 			],
 		},
 		footer: {
