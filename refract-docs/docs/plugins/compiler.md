@@ -5,15 +5,6 @@ title: Compiler
 
 The compiler is what transforms your JSX-like templates into efficient render functions. While most developers will never touch it directly, advanced users can extend it using a **plugin system**, similar to Vue’s compiler architecture.
 
-:::note In this chapter, you'll learn
-
-- How the compiler pipeline works
-- How to create custom compiler plugins
-- How to transform templates with AST visitors
-- Best practices for writing and sharing plugins
-
-:::
-
 ## Compiler Pipeline
 
 The compilation process goes through three main phases:

@@ -3,22 +3,9 @@ id: optics
 title: Optics
 ---
 
-:::note In this chapter
-
-- What optics are and why they matter
-- How to create your first optic
-- How to bundle reusable logic into optics
-- How to compose multiple optics together
-- How optics handle setup and cleanup
-- How to share logic across components
-- Best practices for writing custom optics  
-  :::
-
-  Optics in Refract are **composable logic units** that let you bundle reusable behaviors into your components. If **Refractions** hold state and **Lenses** help you scope it, then **Optics** connect the pieces — combining state, side effects, and transformations into one neat package.
+Optics in Refract are **composable logic units** that let you bundle reusable behaviors into your components. If **Refractions** hold state and **Lenses** help you scope it, then **Optics** connect the pieces — combining state, side effects, and transformations into one neat package.
 
 They’re inspired by React hooks, but with a focus on **composition and clarity**.
-
----
 
 ## Why Optics?
 
@@ -32,8 +19,6 @@ Without optics, you might repeat the same logic in multiple components (e.g., fe
 Refractions and lenses help you see state clearly, but optics sharpen the _logic_ in focus.  
 They bring together data and side effects so your components can stay simple and declarative.
 :::
-
----
 
 ## Basic Usage
 
@@ -189,12 +174,14 @@ function ThemeToggler({ optic }) {
 
 💡 This demonstrates optics as a bridge between local components and global context/state.
 
-## Best Practices
+## Related Resources
 
-- Keep optics focused and reusable.
+Here are some helpful links to deepen your understanding of Refract and related tools:
 
-- Avoid putting UI logic inside optics.
+- 📘 Refract Documentation – Learn more about core concepts and APIs.
 
-- Clean up any listeners or timers in the return function.
+- 🚀 Vite Documentation – Explore the build tool we used to set up our development environment.
 
-- Compose small optics into larger ones rather than duplicating logic.
+- ⚛️ JSX Guide – A refresher on JSX syntax and how it’s used to structure your UI.
+
+- 🛠️ Node.js – Make sure you’re comfortable with Node.js, since it powers your development setup.

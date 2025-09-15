@@ -1,0 +1,126 @@
+---
+id: quickstart
+title: Quickstart
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+The fastest way to get up and running with Refract is to create a new project and render your first component. This guide takes just a few minutes and assumes you already have Node.js (v18+) installed.
+
+Kick off your first Refract component in minutes:
+
+## Step 1: Set up your project folder
+
+Begin by preparing the basic structure for your Refract app.  
+Run the following commands in your terminal:
+
+```bash title="Initialize project files"
+# Make a source folder
+mkdir src
+
+# Add the main files
+touch src/main.js src/App.js index.html
+
+```
+
+## Step 2: Create your HTML entry point
+
+Every Refract app needs an HTML file to serve as the root.  
+Add the following code inside **index.html**:
+
+```html title="index.html"
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Refract Starter</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
+```
+
+## Step 3: Build your first Refract component
+
+Next, let’s define a simple component that displays a message and responds to user interaction.  
+Create a file called **src/App.js** and add the following:
+
+```jsx title="src/App.js"
+import { createComponent } from "refract";
+
+const App = createComponent(({ lens }) => {
+	const text = lens.useRefraction("Hello from Refract!");
+
+	return (
+		<div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+			<h1>{text.value}</h1>
+			<p>This is your very first Refract component 🎉</p>
+			<button
+				onClick={() => text.set("You clicked the button!")}
+				style={{
+					padding: "10px 20px",
+					backgroundColor: "#007acc",
+					color: "#fff",
+					border: "none",
+					borderRadius: "6px",
+					cursor: "pointer",
+				}}>
+				Click me
+			</button>
+		</div>
+	);
+});
+
+export default App;
+```
+
+## Step 4: Initialize your Refract app
+
+Now, you need an entry point to launch your Refract app.  
+Inside **src/main.js**, add the following code:
+
+```js title="src/main.js"
+import { createApp } from "refract";
+import App from "./App.js";
+
+const app = createApp(App);
+app.mount("#root");
+```
+
+## Step 5: Run your development server
+
+Time to bring your project to life!  
+Start the dev server by running:
+
+<Tabs>
+	<TabItem value='npm' label='npm' default>
+		```bash npm install npm run dev ```
+	</TabItem>
+	<TabItem value='yarn' label='Yarn'>
+		```bash yarn install yarn dev ```
+	</TabItem>
+	<TabItem value='pnpm' label='pnpm'>
+		```bash pnpm install pnpm dev ```
+	</TabItem>
+</Tabs>
+
+You should see output similar to this:
+
+```plaintext
+  vite v4.4.5  ready in 123 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: use --host to expose
+  ➜  press h to show help
+  ➜  press q to quit
+```
+
+## Step 6: View your app in the browser
+
+Open your browser and navigate to `http://localhost:3000`. You should see your Refract app displaying "Hello from Refract!" along with a button. Click the button to see the message change.
+Congratulations! You've successfully created and run your first Refract component. From here, you can start exploring more features and building out your application. Happy coding!
+🚀

@@ -5,14 +5,6 @@ title: Router
 
 Router plugins extend the framework’s navigation system. They let you intercept navigation, add custom guards, or provide new routing features like authentication, analytics, or transitions.
 
-:::note In this chapter, you’ll learn
-
-- How router plugins work
-- How to create and register a router plugin
-- Common use cases (auth, logging, transitions)
-- Best practices for building router plugins  
-  :::
-
 ## Why Router Plugins?
 
 Routing is central to any SPA. Instead of baking every feature into the core, plugins allow you to customize and scale routing behavior:

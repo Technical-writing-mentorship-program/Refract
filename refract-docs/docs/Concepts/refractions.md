@@ -7,18 +7,6 @@ Refractions are Refract’s reactive state units lightweight containers for valu
 
 Think of refractions as the “single source of truth” for your component’s state.
 
-:::note In this chapter, you'll learn
-
-- What refractions are and why they matter
-- How to create and use a refraction
-- How to read and update state with refractions
-- How refractions trigger reactive updates in components
-- How to work with nested or complex state
-- Best practices for managing state with refractions  
-  :::
-
----
-
 ## Why Refractions?
 
 Without a reactive state system, keeping your UI in sync with data can become tedious and error-prone. Refractions solve this by:
@@ -46,7 +34,7 @@ count.set(1);
 console.log(count.get()); // 1
 ```
 
-A refraction exposes a simple API:
+## A refraction exposes a simple API:
 
 - get() → current value
 
@@ -178,15 +166,3 @@ effect(fn);
 ```
 
 Runs a side-effect whenever the refractions accessed inside fn change.
-
-## Best practices
-
-- Keep global app state in refractions at module scope.
-
-- Use focused refractions to keep updates granular.
-
-- Prefer derive instead of manually recomputing values in components.
-
-- Use effect for side-effects only, not for deriving state.
-
-Think of refractions as the “atoms” of state in Refract. They’re small, reactive, composable, and can be wired together into any architecture you like.

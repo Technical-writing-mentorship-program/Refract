@@ -7,14 +7,6 @@ Plugins are the extension points of the framework. They allow developers to hook
 
 Think of plugins as “add-ons” that register extra behavior—whether it’s a new compiler transform, a custom directive, or global utilities.
 
-:::note In this chapter, you’ll learn
-
-- What plugins are and why they matter
-- How to create and register a plugin
-- The plugin lifecycle
-- Common use cases and best practices  
-  :::
-
 ## Why Plugins?
 
 Without plugins, frameworks would need to ship with every possible feature built-in. Plugins solve this by letting you extend functionality **on demand**:
