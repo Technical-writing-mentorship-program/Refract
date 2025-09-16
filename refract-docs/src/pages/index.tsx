@@ -136,8 +136,8 @@ function HomepageHeader() {
 									"button button--secondary button--lg",
 									styles.secondaryButton
 								)}
-								to='/docs/API/createComponent'>
-								<span>📖 API Reference</span>
+								to='/docs/Tutorials/counter-app'>
+								<span>📖 Tutorial</span>
 							</Link>
 						</div>
 						<div className={styles.trustBadges}>

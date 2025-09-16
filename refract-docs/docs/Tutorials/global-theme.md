@@ -3,8 +3,6 @@ id: global-theme
 title: Global Theme
 ---
 
-Global Themes
-
 Refract allows you to define global themes that apply consistent colors, typography, and component styles across your entire application. Themes make it easy to maintain a unified look and feel, while still giving you the flexibility to adapt to dark mode, brand requirements, or user preferences.
 
 ## Why Use Global Themes?

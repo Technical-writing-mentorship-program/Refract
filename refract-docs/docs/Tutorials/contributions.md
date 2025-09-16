@@ -3,8 +3,6 @@ id: contributions
 title: Contributions
 ---
 
-## Contributing to Refract
-
 Learning a framework is even more fun when you can contribute back to it. This tutorial section shows you simple ways you can make an impact.
 
 Ways You Can Contribute
